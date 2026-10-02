@@ -14,21 +14,21 @@ jobs:
   release:
     name: Build for ${{ matrix.arch }} (${{ matrix.id }})
     runs-on: ubuntu-latest
-strategy:
-      fail-fast: false
-      matrix:
-        include:
-          # 小米 / 红米 AC2100 (MediaTek MT7621 / mipsel_24kc) - OpenWrt 25.12
-          - id: 25.12-ac2100
-            arch: mipsel_24kc
-            sdk_url_path: https://downloads.openwrt.org/releases/25.12.0/targets/ramips/mt7621
-            sdk_name: -sdk-25.12.0-ramips-mt7621_
-
-          # 小米路由器 AX3000T (MediaTek MT7981BA / Filogic / aarch64_cortex-a53) - OpenWrt 25.12
-          - id: 25.12-ax3000t
-            arch: aarch64_cortex-a53
-            sdk_url_path: https://downloads.openwrt.org/releases/25.12.0/targets/mediatek/filogic
-            sdk_name: -sdk-25.12.0-mediatek-filogic_
+    strategy:
+          fail-fast: false
+          matrix:
+            include:
+              # 小米 / 红米 AC2100 (MediaTek MT7621 / mipsel_24kc) - OpenWrt 25.12
+              - id: 25.12-ac2100
+                arch: mipsel_24kc
+                sdk_url_path: https://downloads.openwrt.org/releases/25.12.0/targets/ramips/mt7621
+                sdk_name: -sdk-25.12.0-ramips-mt7621_
+    
+              # 小米路由器 AX3000T (MediaTek MT7981BA / Filogic / aarch64_cortex-a53) - OpenWrt 25.12
+              - id: 25.12-ax3000t
+                arch: aarch64_cortex-a53
+                sdk_url_path: https://downloads.openwrt.org/releases/25.12.0/targets/mediatek/filogic
+                sdk_name: -sdk-25.12.0-mediatek-filogic_
 
     env:
       SDK_URL_PATH: ${{ matrix.sdk_url_path }}
